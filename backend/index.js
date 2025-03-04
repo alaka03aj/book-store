@@ -8,15 +8,18 @@ app.get("/", (request, response) => {
   return response.status(234).send("status 234 from server");
 });
 
+app.use(express.json())
+
 app.post('/books', async (request, response) => {
     try {
-        if (!request.body.title || !request.body.author || !request.body.publishYear) {
+        console.log(request.body)
+        if (!request.body.title || !request.body.author || !request.body.publishedYear) {
             return response.status(400).send({ message: "Make sure to answer all fields before submitting"})
         }
         const newBook = {
             title: request.body.title,
             author: request.body.author,
-            publishYear: request.body.publishYear,
+            publishedYear: request.body.publishedYear,
         }
         const book = await Book.create(newBook);
         return response.status(201).send({message: `Book created ${book}`})
