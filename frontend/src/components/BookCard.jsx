@@ -11,11 +11,12 @@ const BookCard = ({ book }) => {
           <p>{book.title}</p>
           <p>{book.author}</p>
           <p>{book.publishedYear}</p>
-        </div>
-        <div className="bottom-0 flex justify-center">
+          <div className="flex gap-2 justify-end">
             <Link to={`/books/edit/${book._id}`}><AiOutlineEdit /></Link>
             <Link to={`/books/delete/${book._id}`}><MdOutlineDelete /></Link>
         </div>
+        </div>
+        
       </Link>
     </>
   );
